@@ -1,0 +1,120 @@
+<mvc:View
+        height="100%"
+        controllerName="leverx.sap.kozhemyakina.Supplier.controller.ProductInfo"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <Page
+            id="idPage"
+            title="Product: {Name}"
+            showNavButton="true"
+            navButtonPress="onNavBack"
+            enableScrolling="true">
+
+        <content>
+            <ObjectHeader
+                    title="{Name}"
+                    number="{
+                            parts:[{path:'Price'},{path:'CurrencyCode'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: false}
+                            }"
+                    numberUnit="{CurrencyCode}" >
+
+                <attributes>
+                    <ObjectAttribute title="Weight" text="{WeightMeasure} {WeightUnit}" />
+                    <ObjectAttribute title="Dimensions" text="{DimensionWidth} x {DimensionDepth} X {DimensionHeight} {DimensionUnit}" />
+
+                </attributes>
+                <statuses>
+                    <ObjectStatus title="Status" text="In Stock" state="Success" />
+                </statuses>
+            </ObjectHeader>
+            <IconTabBar
+                    expanded="{device>/isNoPhone}"
+                    class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter
+                            text="Product info">
+                        <f:SimpleForm
+                                id="productDetailsForm"
+                                minWidth="1024"
+                                maxContainerCols="2"
+                                layout="ResponsiveGridLayout" >
+                            <f:title>
+                                <core:Title text="{Name}" />
+                            </f:title>
+
+                            <Label text="Rating"/>
+                            <Text text="{AverageRating}"/>
+
+                            <Label text="Description"/>
+                            <Text text="{Description}"/>
+
+                            <Label text="Quantity"/>
+                            <Text text="{StockQuantity}"/>
+
+                            <Label text="Price"/>
+                            <Text text="{Price} {CurrencyCode}"/>
+
+                            <Label text="Dimensions"/>
+                            <Text text="{DimensionWidth} x {DimensionDepth} X {DimensionHeight} {DimensionUnit}"/>
+
+                            <Label text="Main category name"/>
+                            <Text text="{MainCategoryName}"/>
+
+                            <Label text="Measure unit"/>
+                            <Text text="{MeasureUnit}"/>
+
+                            <Label text="Quantity unit"/>
+                            <Text text="{QuantityUnit}"/>
+
+                            <Label text="Rating count"/>
+                            <Text text="{RatingCount}"/>
+
+                            <Label text="Sub category name"/>
+                            <Text text="{SubCategoryName}"/>
+
+                            <Label text="Supplier name"/>
+                            <Text text="{SupplierName}"/>
+
+                            <Label text="Weight"/>
+                            <Text text="{WeightMeasure} {WeightUnit}"/>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                            text="Supplier info">
+                        <f:SimpleForm
+                                id="supplierDetailsForm"
+                                minWidth="1024"
+                                maxContainerCols="2"
+                                layout="ResponsiveGridLayout" >
+                            <f:title>
+                                <core:Title text="{Name}" />
+                            </f:title>
+                            <Label text="Web address"/>
+                            <Text text="{WebAddress}"/>
+
+                            <Label text="Email"/>
+                            <Text text="{ContactEmail}"/>
+
+                            <Label text="Address"/>
+                            <Text text="{FormattedAddress}"/>
+
+                            <Label text="Phone"/>
+                            <Text text="{Phone}"/>
+
+                            <Label text="Contact name"/>
+                            <Text text="{FormattedContactName}"/>
+                        </f:SimpleForm>
+
+                    </IconTabFilter>
+
+                </items>
+            </IconTabBar>
+
+
+        </content>
+    </Page>
+</mvc:View>

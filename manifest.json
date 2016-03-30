@@ -1,0 +1,143 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "${project.artifactId}",
+		"type": "application",
+		"resources": "resources.json",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "${project.version}"
+		},
+		"ach": "",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "LocalService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.1worklist",
+			"version": "1.0.9"
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "leverx.sap.kozhemyakina.Supplier.view.App",
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "leverx.test.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					}
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "leverx.sap.kozhemyakina.Supplier.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": "notFound"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "table",
+					"target": "table"
+				},
+				{
+					"pattern": "Product",
+					"name": "object",
+					"target": "object"
+				},
+				{
+					"pattern": "Map",
+					"name": "Map",
+					"target": "Map"
+				},
+				{
+					"pattern": "Products/{Id}",
+					"name": "ProductInfo",
+					"target": "ProductInfo"
+				}
+			],
+			"targets": {
+				"table": {
+					"viewName": "table",
+					"viewId": "table",
+					"viewLevel": "1"
+				},
+				"ProductInfo": {
+					"viewName": "ProductInfo",
+					"viewId": "ProductInfo",
+					"viewLevel": "1"
+				},
+				"Map":{
+					"viewName":"Map",
+					"viewId":"Map",
+					"viewLevel":"1"
+
+				},
+				"objectNotFound": {
+					"viewName": "ObjectNotFound",
+					"viewId": "objectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+
+	}
+}

@@ -1,0 +1,54 @@
+<mvc:View
+        height="100%"
+        controllerName="leverx.sap.kozhemyakina.Supplier.controller.Map"
+        xmlns:core="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:f="sap.ui.layout.form"
+        xmlns="sap.m"
+        xmlns:custom="leverx.sap.kozhemyakina.Supplier.controls">
+    <Page
+
+            showNavButton = "true"
+            navButtonPress = "onNavBack"
+            enableScrolling="true"
+            title="Supplier mode">
+        <content>
+            <OverflowToolbar id="otb1">
+                <Label text="Select product:" />
+                <ToolbarSpacer />
+                <Select id="productSelect"
+                    change="onItemSelected"
+                    items="{/Products}">
+
+                    <core:Item key="{Id}" text="{Name}" />
+                </Select>
+            </OverflowToolbar>
+            <f:SimpleForm
+                    minWidth="1024"
+                    maxContainerCols="2"
+                    editable="false"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    columnsL="1"
+                    columnsM="1">
+                <f:content>
+                    <Label text="WebAddress" />
+                    <Text text="{SelectedSupplier>/WebAddress}" />
+                    <Label text="FormattedAddress" />
+                    <Text text="{SelectedSupplier>/FormattedAddress}" />
+                    <Label text="Phone1" />
+                    <Text text="{SelectedSupplier>/ContactPhone1}" />
+                    <Label text="Phone2" />
+                    <Text text="{SelectedSupplier>/ContactPhone2}" />
+                </f:content>
+            </f:SimpleForm>
+            <!--<custom:SupplierMap />-->
+            <VBox fitContainer="true" justifyContent="Center" alignItems="Center">
+                <HBox id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" class="myMap"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

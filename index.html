@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+
+    <script id="sap-ui-bootstrap"
+            src="https://openui5.hana.ondemand.com/1.30.4/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-resourceroots='{
+"leverx.sap.kozhemyakina.Supplier": "./"
+
+}'
+            data-sap-ui-frameOptions='allow'>
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-fPYU6ppJryzoEbxqF_nFMtDtBJFEJ2M&sensor=false"
+            type ="text/javascript"></script>
+    <script>
+
+        sap.ui.getCore().attachInit(function() {
+            
+            sap.ui.require(["leverx/sap/kozhemyakina/Supplier/LocalService/mockserver"
+            ], function (mockserver) {
+                mockserver.init();
+
+                var oODataModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/");
+                sap.ui.getCore().setModel(oODataModel);
+
+                new sap.ui.core.ComponentContainer({
+                    name : "leverx.sap.kozhemyakina.Supplier"
+                }).placeAt("content");
+            });
+
+        });
+
+
+    </script>
+    <style>
+        .myMap {
+            height: 100%;
+            width: 50%
+        }
+    </style>
+</head>
+
+<!— UI Content —>
+<body class="sapUiBody" id="content">
+</body>
+</html>

@@ -1,0 +1,117 @@
+<mvc:View
+        controllerName="leverx.sap.kozhemyakina.Supplier.controller.Table"
+        xmlns:l="sap.ui.layout"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+
+
+    <Page
+            showHeader="true"
+            enableScrolling="true"
+            class="sapUiContentPadding"
+            title="Products">
+        <content>
+
+            <Button text ="Go to Supplier Mode" press = "onPressPageMap"/>
+            <Table
+                    mode = "MultiSelect"
+                    selectionChange = "onSelectionChange"
+                    id="idProductsTable"
+                   items="{
+                    path: '/Products',
+                    sorter: {
+						path: 'Id',
+						descending: false
+						}
+					}"
+                   noDataText="No Data"
+                   growing="false"
+                   growingScrollToLoad="false">
+
+                <headerToolbar>
+                    <Toolbar>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+
+                    <Column
+                            width="12em">
+                        <Text text="Product" />
+                    </Column>
+                    <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true">
+                        <Text text="Supplier" />
+                    </Column>
+                    <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            hAlign="Right">
+                        <Text text="Description" />
+                    </Column>
+                    <Column
+                            hAlign="Right">
+                        <Text text="Price" />
+                    </Column>
+                    <Column
+                            hAlign="Right">
+                        <Text text="Rating" />
+                    </Column>
+                    <Column
+                            hAlign="Right">
+                        <Text text="" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        type = "Navigation"
+                        press = "goToSupplierPage">
+                        <cells>
+
+                            <ObjectIdentifier
+                                    title="{Name}"
+                                    text="{Id}"/>
+                            <Text
+                                    text="{SupplierName}" />
+                            <Text
+                                    text="{Description}" />
+                            <Text
+                                    text="{Price}" />
+                            <RatingIndicator maxValue="5"
+                                             value="{
+                                                    parts: [
+                                                    { path: 'AverageRating'}
+                                                    ],
+                                                    formatter: '.formatter.floatFormatter'
+                                                    }"/>
+
+                            <Button
+                                    text="Message Dialog"
+                                    press="onMessageDialogPress"
+                                    class="sapUiSmallMarginBottom"/>
+                        </cells>
+                    </ColumnListItem>
+
+                </items>
+            </Table>
+        </content>
+
+        <footer>
+            <OverflowToolbar id="otbFooter">
+                <ToolbarSpacer/>
+                <Button type="Delete" id="removeButton" text="Delete" icon="sap-icon://delete" press = "onPressDelete">
+                    <layoutData><OverflowToolbarLayoutData moveToOverflow="false" /></layoutData>
+                </Button>
+                <Button type="Add" text="Add" id="newButton" icon="sap-icon://add" press = "onPressAdd">
+                    <layoutData><OverflowToolbarLayoutData moveToOverflow="false" /></layoutData>
+                </Button>
+
+
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+</mvc:View>
+
+
+

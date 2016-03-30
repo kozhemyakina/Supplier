@@ -1,0 +1,25 @@
+<mvc:View
+        controllerName="leverx.sap.kozhemyakina.Supplier.controller.Review"
+        xmlns:l="sap.ui.layout"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <l:VerticalLayout
+            class="sapUiContentPadding"
+            width="100%">
+        <l:content>
+            <List
+
+                    items="{/}" >
+                <FeedListItem
+                        sender="{UserDisplayName}"
+                        icon=""
+                        senderPress="onPress"
+                        iconPress="onPress"
+                        iconDensityAware="false"
+                        info="{Type}"
+                        timestamp=""
+                        text="{Comment}" />
+            </List>
+        </l:content>
+    </l:VerticalLayout>
+</mvc:View>

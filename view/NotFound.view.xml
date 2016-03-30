@@ -1,0 +1,17 @@
+<mvc:Viw
+        controllerName="leverx.sap.kozhemyakina.Supplier.controller.NotFound"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <MessagePage
+            title="404 Error"
+            text="Page not found"
+            icon="{sap-icon://document}"
+            id="page"
+            description=""
+            showNavButton="true"
+            navButtonPress="onNavBack">
+        <customDescription>
+            <Link id="link" text="To products" press="onLinkPressed" />
+        </customDescription>
+    </MessagePage>
+</mvc:Viw>
